@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "install:legacy": "npm i --legacy-peer-deps",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "client:deploy": "sls client deploy --no-config-change --no-policy-change --no-cors-change",
