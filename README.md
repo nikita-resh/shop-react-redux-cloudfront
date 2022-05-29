@@ -1,3 +1,10 @@
+###### Crosscheck
+Links:
+* CloudFront URL: https://d3jsueipexp5kz.cloudfront.net
+* S3: http://my-second-app-2022-05-28.s3-website-us-east-1.amazonaws.com
+
+Have a good day!
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
