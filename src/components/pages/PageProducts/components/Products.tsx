@@ -11,7 +11,7 @@ import { formatAsPrice } from 'utils/utils';
 import AddProductToCart from 'components/AddProductToCart/AddProductToCart';
 // import axios from 'axios';
 // import API_PATHS from "constants/apiPaths";
-import productList from './productList.json';
+import productList from './productList';
 
 const useStyles = makeStyles(theme => ({
 	card: {
@@ -48,14 +48,27 @@ export default function Products() {
 					<Card className={classes.card}>
 						<CardMedia
 							className={classes.cardMedia}
-							image={`https://source.unsplash.com/random?sig=${index}`}
+							style={{ filter: 'saturation(0)' }}
+							image={require(`../../../../../assets/${product.id}-min.png`)}
 							title="Image title"
 						/>
 						<CardContent className={classes.cardContent}>
+							<Typography variant="overline" component="span" style={{ opacity: 0.5 }}>
+								{product.author}
+							</Typography>
 							<Typography gutterBottom variant="h5" component="h2">
 								{product.title}
 							</Typography>
-							<Typography>{formatAsPrice(product.price)}</Typography>
+							<Typography>{formatAsPrice((product.price * (100 - product.discount)) / 100)}</Typography>
+							{product.discount ? (
+								<Typography
+									variant="inherit"
+									component="p"
+									style={{ textDecoration: 'line-through', opacity: 0.5 }}
+								>
+									{formatAsPrice(product.price)}
+								</Typography>
+							) : null}
 						</CardContent>
 						<CardActions>
 							<AddProductToCart product={product} />

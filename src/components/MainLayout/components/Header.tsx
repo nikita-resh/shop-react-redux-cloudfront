@@ -45,9 +45,9 @@ export default function Header() {
 	return (
 		<AppBar position="relative">
 			<Toolbar>
-				<Typography variant="h6" className={classes.title}>
+				<Typography variant="h5" className={classes.title}>
 					<Link className={classes.homeLink} to="/">
-						My Store!
+						Bookly!
 					</Link>
 				</Typography>
 

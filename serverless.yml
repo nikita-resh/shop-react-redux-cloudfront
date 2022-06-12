@@ -1,9 +1,10 @@
-service: my-second-app
+service: bookly-shop-client
 
 frameworkVersion: '3'
 
 provider:
     name: aws
+    region: eu-west-1
     runtime: nodejs16.x
     # profile: personalProfile
 
@@ -16,7 +17,7 @@ plugins:
 
 custom:
     client:
-        bucketName: my-second-app-2022-05-28
+        bucketName: bookly-shop-client
         distributionFolder: build
     s3BucketName: ${self:custom.client.bucketName}
 
