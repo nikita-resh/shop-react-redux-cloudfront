@@ -11,12 +11,13 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import { formatAsPrice } from 'utils/utils';
+import { Product } from 'models/Product';
 
 export default function ProductsTable() {
-	const [products, setProducts] = useState<any>([]);
+	const [products, setProducts] = useState<Product[]>([]);
 
 	useEffect(() => {
-		axios.get(`${API_PATHS.base}/products`).then(res => setProducts(res.data));
+		axios.get(`${API_PATHS.base}/products`).then(res => setProducts(res.data.products));
 	}, []);
 
 	const onDelete = (id: string) => {

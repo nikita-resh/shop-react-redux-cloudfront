@@ -38,6 +38,8 @@ export default function Products() {
 		axios.get(`${API_PATHS.base}/products`).then(res => setProducts(res.data.products));
 	}, []);
 
+	const fileName = 'book';
+
 	return (
 		<Grid container spacing={4}>
 			{products.map((product: Product, index: number) => (
@@ -46,7 +48,7 @@ export default function Products() {
 						<CardMedia
 							className={classes.cardMedia}
 							style={{ filter: 'saturation(0)' }}
-							image={require(`../../../../../assets/${product.id}-min.png`)}
+							image={require(`../../../../../assets/${fileName}.jpeg`)}
 							title="Image title"
 						/>
 						<CardContent className={classes.cardContent}>

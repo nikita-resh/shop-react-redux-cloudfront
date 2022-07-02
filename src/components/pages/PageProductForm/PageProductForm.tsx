@@ -51,11 +51,24 @@ const Form = (props: FormikProps<FormikValues>) => {
 						required
 					/>
 				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Field component={TextField} name="author" label="Author" fullWidth autoComplete="off" required />
+				</Grid>
+				<Grid item xs={12} sm={6}>
+					<Field component={TextField} name="count" label="Count" fullWidth autoComplete="off" required />
+				</Grid>
 				<Grid item xs={12} sm={4}>
 					<Field component={TextField} name="price" label="Price ($)" fullWidth autoComplete="off" required />
 				</Grid>
 				<Grid item xs={12} sm={4}>
-					<Field component={TextField} name="count" label="Count" fullWidth autoComplete="off" required />
+					<Field
+						component={TextField}
+						name="discount"
+						label="Discount"
+						fullWidth
+						autoComplete="off"
+						required
+					/>
 				</Grid>
 				<Grid item container xs={12} justify="space-between">
 					<Button color="primary">Cancel</Button>
@@ -84,7 +97,7 @@ export default function PageProductForm() {
 	const onSubmit = (values: FormikValues) => {
 		const formattedValues = ProductSchema.cast(values);
 		const productToSave = id ? { ...ProductSchema.cast(formattedValues), id } : formattedValues;
-		axios.put(`${API_PATHS.bff}/product`, productToSave).then(() => history.push('/admin/products'));
+		axios.post(`${API_PATHS.base}/products`, productToSave).then(() => history.push('/admin/products'));
 	};
 
 	useEffect(() => {
@@ -106,7 +119,10 @@ export default function PageProductForm() {
 				{id ? 'Edit product' : 'Create new product'}
 			</Typography>
 			<Formik initialValues={product || emptyValues} validationSchema={ProductSchema} onSubmit={onSubmit}>
-				{(props: FormikProps<FormikValues>) => <Form {...props} />}
+				{(props: FormikProps<FormikValues>) => {
+					console.log(props);
+					return <Form {...props} />;
+				}}
 			</Formik>
 		</PaperLayout>
 	);
